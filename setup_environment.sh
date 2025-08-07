@@ -41,13 +41,33 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate $ENV_NAME
 
 # Install packages via conda (faster and more reliable for these packages)
-conda install tensorflow matplotlib numpy pillow jupyter ipykernel -c conda-forge -y
+conda install matplotlib numpy pillow jupyter ipykernel -c conda-forge -y
 
-# Install tensorflow-datasets via pip (not available in conda-forge)
-pip install tensorflow-datasets
+# Install TensorFlow and tensorflow-datasets via pip (more stable versions)
+pip install tensorflow==2.17.1 tensorflow-datasets
 
 echo "🎯 Registering Jupyter kernel..."
 python -m ipykernel install --user --name $ENV_NAME --display-name "Python (flower-classifier)"
+
+echo "🧪 Testing TensorFlow installation..."
+python -c "import tensorflow as tf; print(f'TensorFlow {tf.__version__} imported successfully!')"
+
+echo "🔍 Testing MPS (Apple Silicon GPU) support..."
+python -c "
+import tensorflow as tf
+import platform
+if platform.machine() == 'arm64':
+    try:
+        with tf.device('/GPU:0'):
+            test = tf.constant([1.0, 2.0, 3.0])
+            result = tf.reduce_sum(test).numpy()
+        print('✅ MPS (Metal Performance Shaders) is working!')
+        print('🚀 GPU acceleration will be available for training!')
+    except:
+        print('⚠️  MPS not available, will use CPU')
+else:
+    print('ℹ️  MPS is only available on Apple Silicon Macs')
+"
 
 echo "✅ Environment setup complete!"
 echo ""
@@ -55,7 +75,7 @@ echo "🚀 To use the environment:"
 echo "   conda activate $ENV_NAME"
 echo ""
 echo "📓 To launch Jupyter Notebook:"
-echo "   jupyter notebook Project_Image_Classifier_Project.ipynb"
+echo "   jupyter notebook Project_Image_Classifier_Project_Solution.ipynb"
 echo ""
 echo "🔍 To verify installation:"
 echo "   python -c \"import tensorflow as tf; print('TensorFlow version:', tf.__version__)\""

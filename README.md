@@ -2,7 +2,7 @@
 
 **This Project was first submitted on September 11, 2024. Later on, it went through some enhancements that are listed below.**
 
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.18.1-orange?logo=tensorflow)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.17.1-orange?logo=tensorflow)
 ![Python](https://img.shields.io/badge/Python-3.9-blue?logo=python)
 ![Conda](https://img.shields.io/badge/Conda-Environment-green?logo=anaconda)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
@@ -46,7 +46,7 @@ This repository contains a **complete solution** to the **Introduction to Machin
 
 ## 🛠️ Technical Stack
 
-- **Framework**: TensorFlow 2.18.1
+- **Framework**: TensorFlow 2.17.1
 - **Architecture**: MobileNetV2 (Transfer Learning)
 - **Dataset**: Oxford Flowers 102 (via TensorFlow Datasets)
 - **Environment**: Conda Virtual Environment
@@ -92,8 +92,8 @@ conda activate flower-classifier
 
 ### 2. Install Dependencies
 ```bash
-conda install tensorflow matplotlib numpy pillow jupyter ipykernel -c conda-forge -y
-pip install tensorflow-datasets
+conda install matplotlib numpy pillow jupyter ipykernel -c conda-forge -y
+pip install tensorflow==2.17.1 tensorflow-datasets
 ```
 
 ### 3. Register Jupyter Kernel
