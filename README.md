@@ -61,6 +61,8 @@ image_classifier/
 ├── setup_environment.sh                             # Automated environment setup script
 ├── label_map.json                                   # Flower class mappings
 ├── README.md                                        # This file
+├── .gitignore                                       # Git ignore rules for Python/ML projects
+├── *.keras                                          # Trained model files (generated after training)
 ├── assets/                                          # Project images and resources
 │   ├── Flowers.png
 │   └── inference_example.png
